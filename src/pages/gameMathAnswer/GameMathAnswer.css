@@ -1,0 +1,9 @@
+.write-an-answer p{
+    text-align: center;
+}
+/* .example-answer p{
+    color: lightgray;
+} */
+.answer-card{
+    width: 500px;
+}

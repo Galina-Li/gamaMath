@@ -1,0 +1,26 @@
+.containerContinue{
+    display: flex;
+   align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+    background-color: aqua;
+}
+.continueContainer{
+    width: 200px;
+    height: 200px;
+}
+.chahgeAnswer{
+    display: flex;
+    justify-content: center;
+
+}
+.continue-answer{
+    background-repeat: no-repeat;
+    width: 44px;
+    height: 20px;
+    margin-right: 40px;
+}
+.continue{
+    text-align: center;
+}
