@@ -1,45 +1,32 @@
-.button {
-    width: 15px;
-    height: 15px;
-    display: inline-block;
-    padding: 1px;
-    cursor: pointer;
-    border: solid 1px #fff;
+.canvas{
+    /* display: flex;
+    justify-content: center;
+    margin: auto; */
+
+}
+.canvasContainer{
+    margin-left: 10%;
+    width: fit-content;
   }
-   
-  .button:hover {
-    border: solid 1px #f00;
+  input {
+    background: transparent;
+    border: none;
+    margin-bottom: 4vmin;
+    /* border: 2px solid #a7f3d0; */
+    border-radius: 2rem;
+    margin-left: 2vmin;
   }
-   
-  .button:active {
-    border: solid 1px #ff0;
+  button {
+    background: transparent;
+    border: none;
+    margin-bottom: 4vmin;
+    border: 2px solid #a7f3d0;
+    border-radius: 2rem;
+    margin-left: 2vmin;
+    padding: 2vmin 2rem;
   }
-   
-  #palette, #canvas {
-    display: inline-block;
-    border: solid 1px #aaa;
-    cursor: default;
-    vertical-align: top;
-  }
-   
-  #palette {
-    width: 95px;
-    height: 100px;
-  }
-   
-  #clear {
-    background: #eee;
-    color: #777;
-    padding: 10px;
-    width: 200px;
-    text-align: center;
-    margin: 15px auto;
-    cursor: pointer;
-  }
-   
-  .container-canvas {
-     white-space: normal;
-     width: 50px;
-     height: 50px;
-     background-color: lightgreen;
+  .thickness {
+    /* border-radius: 50%; */
+    height: 1rem;
+    background: black;
   }

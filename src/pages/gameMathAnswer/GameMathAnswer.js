@@ -1,6 +1,6 @@
 import React from "react";
 import "./GameMathAnswer.css"
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, Navigate } from "react-router-dom";
 import Menu from "../menu/Menu";
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
@@ -19,12 +19,9 @@ export default function GameMathAnswer() {
     const firstOperand = useSelector(firstOperandSelector)
     const lastOperand = useSelector(lastOperandSelector)
     const operation = useSelector(operationSelector)
-    const navigate = useNavigate()
     
     if(answer === null){ 
-        console.log(answer, 43434)
-        navigate('/gameMath')
-        return <GameMath />
+        return <Navigate to={'/gameMath'}/>
     }
 
     console.log(answer, firstOperand, lastOperand, operation)
@@ -65,7 +62,7 @@ export default function GameMathAnswer() {
                 </div>
                 <div className="example-answer card">
                 <p>{Match.getNumberBySymbol(answer)}</p>
-                    <Canvas  />
+                    <Canvas />
                 </div>
             </div>
             <Link to="/menu">

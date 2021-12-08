@@ -7,16 +7,7 @@ import GameMath from "../gameMath/GameMath"
 
 
 export default function Menu() {
-    // async function convert() {
-    // if(from === to) return [amount, 1]
-    // const timer = setTimeout(() => {
-    //     loading.style.display = 'flex'
-    // }, 500)
-    // const response = await fetch(`https://api.exchangerate.host/convert?from=${from}&to=${to}&amount=${amount}&places=4`)
-    // .catch(() => alert('Нет сети!'))
-    // loading.style.display = 'none'
-    // clearTimeout(timer)
-    return (
+        return (
         <>
             <div className="container">
                 <div className="links">

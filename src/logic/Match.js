@@ -24,7 +24,7 @@ export default class Match {
     }
 
     static getDescriptionByOperation (operation) {
-        return operation === '-' ? 'минус' : "плюс"
+        return operation === '-' ? 'минус' : "пл"
     }
 
 

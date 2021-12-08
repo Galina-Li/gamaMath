@@ -10,22 +10,19 @@ import AnswerDropArea from "../../components/drag&drop/AnswerDropArea";
 import AnswerCard from "../../components/drag&drop/AnswerCard";
 import Alert from "../../components/alert/Alert";
 import { useDispatch } from "react-redux";
-import getRandomIntInclusive from "../../components/random/Random";
-
+import getRandomIntInclusive from '../../components/random/Random'
 
 export default function GameMath() {
-    console.log(Match.data[getRandomIntInclusive(1, 11)])
-    const dispatch = useDispatch()
-    const randomIndex = getRandomIntInclusive(1, 11)
-    const [firstOperand, setFirstOperand] = useState(Match.data[randomIndex].symbol)
-    const [lastOperand, setLastOperand] = useState(Match.data[getRandomIntInclusive(1, Match.data[getRandomIntInclusive(1, randomIndex)])].symbol)
-    const [operation, setOperation] = useState(['-', '+'][getRandomIntInclusive(0, 2)])
-    const [answer, setAnswer] = useState(Match.appendOperationToSymbols(firstOperand, lastOperand, operation))
-    console.log(answer, 3232)
-    const [firstPossibleAnswer, setFirstPossibleAnswer] = useState(Match.data[getRandomIntInclusive(1, 11)].symbol)
-    const [secondPossibleAnswer, setSecondPossibleAnswer] = useState(Match.data[getRandomIntInclusive(1, 11)].symbol)
-    const [thirdPossibleAnswer, setThirdPossibleAnswer] = useState(Match.getSymbolByNumber(answer))
     
+    const dispatch = useDispatch()
+    const [firstOperand, setFirstOperand] = useState(Match.data[getRandomIntInclusive(1, 10)].symbol)
+    const [lastOperand, setLastOperand] = useState(Match.data[getRandomIntInclusive(1, Match.getNumberBySymbol(firstOperand) - 1)].symbol)
+    console.log(Match.getNumberBySymbol(firstOperand), lastOperand)
+    const [operation, setOperation] = useState('-')
+    const [answer, setAnswer] = useState(Match.appendOperationToSymbols(firstOperand, lastOperand, operation))
+    const [firstPossibleAnswer, setFirstPossibleAnswer] = useState('.')
+    const [secondPossibleAnswer, setSecondPossibleAnswer] = useState('..')
+    const [thirdPossibleAnswer, setThirdPossibleAnswer] = useState('...')
     const [answerOptions, setAnswerOptions] = useState (firstPossibleAnswer, secondPossibleAnswer, thirdPossibleAnswer)
     const [childAnswer, setChildAnswer] = useState(null)
     const [isCorrectAnswer, setIsCorrectAnswer] = useState(null)
@@ -42,7 +39,7 @@ export default function GameMath() {
             timer = setTimeout(() =>  restore() ,2000)
         }   else {
             let utterance = new SpeechSynthesisUtterance
-            (`${Match.getNumberBySymbol(firstOperand)} ${Match.getDescriptionByOperation(operation)} ${Match.getNumberBySymbol(lastOperand)} равно ${answer}`);
+            (`Повторяй за мной ${Match.getNumberBySymbol(firstOperand)} ${Match.getDescriptionByOperation(operation)} ${Match.getNumberBySymbol(lastOperand)} равно ${answer}`);
             speechSynthesis.speak(utterance);
             dispatch({type: 'CARRYOVER_ANSWER', payload: {
                 answer: Match.getSymbolByNumber(childAnswer), 
@@ -56,8 +53,10 @@ export default function GameMath() {
         return () => clearTimeout(timer)
     }, [isCorrectAnswer])
     return (
+        
         <DndProvider backend={HTML5Backend}>
         <div className="containerGameMath">
+            
             <div className="answers">
                   <AnswerCard id={1} name={firstPossibleAnswer} onDragEnd={(setChildAnswer)}/>
                   <AnswerCard id={2} name={secondPossibleAnswer} onDragEnd={(setChildAnswer)}/>
